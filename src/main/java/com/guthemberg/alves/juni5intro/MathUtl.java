@@ -5,6 +5,8 @@
  */
 package com.guthemberg.alves.juni5intro;
 
+import java.util.Objects;
+
 /**
  *
  * @author frist
@@ -41,33 +43,30 @@ public class MathUtl {
         }
         
         //propriedade 3 e 9
-        int mdc = 0;
-      // 16 % 10 == 1,6(entra)  
+        int mdc = 0; 
         while(a % b != 0 ){
             mdc = a % b;
             a = b;
             b = mdc;
-//            return 1;
         }
         if(mdc != 0){
             return mdc;
         }
         return -1;
     }
-    public static int mdc(int[] valores ) {
-
-        if(valores.length >= 1 ){
-            int a = valores[0];
-            
-            int cont=1;
-            do {
-                
-                a = MathUtl.mdc(a, valores[cont]);
-                cont++;
-            } while (cont < valores.length);
-            return a;
+    public static int mdc(int ...valores ) {
+        Objects.requireNonNull(valores, "mdc não aceita valor null como entrada");
+        
+        if(valores.length<1){
+            throw new IllegalArgumentException("mdc requer no mínimo um argumento");
         }
-        return -1;
+        int a = valores[0];
+        int cont=1;
+        do {
+            a = MathUtl.mdc(a, valores[cont]);
+            cont++;
+        } while (cont < valores.length);
+        return a;
     }
    
 }

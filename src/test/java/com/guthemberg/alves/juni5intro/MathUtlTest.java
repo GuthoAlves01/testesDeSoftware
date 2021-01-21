@@ -35,9 +35,7 @@ public class MathUtlTest {
         final int a = 16;
         final int b = 8;
         final int divisor = 4; 
-//        final int esperado = 0;
         final int atual = MathUtl.mdc(a,b);
-//        assertEquals(esperado, atual % divisor);
         assertTrue(atual % divisor==0);
     }
     
@@ -97,8 +95,6 @@ public class MathUtlTest {
         final int b = 2;
         final int esperado = MathUtl.mdc(a, b);
         final int atual = MathUtl.mdc(b, a);
-//        System.out.println(MathUtl.mdc(a, b));
-//        System.out.println(MathUtl.mdc(b, a));
         assertEquals(esperado, atual);
     }
     @Test
@@ -107,8 +103,6 @@ public class MathUtlTest {
         final int b = 16;
         final int esperado = 2;
         final int atual = MathUtl.mdc(a, b);
-//        System.out.println(MathUtl.mdc(a, b));
-//        System.out.println(MathUtl.mdc(b, a));
         assertEquals(esperado, atual);
     }
     @Test
@@ -127,7 +121,6 @@ public class MathUtlTest {
         final int atual = MathUtl.mdc(a, b);
         assertEquals(esperado, atual);
     }
-    //propriedade 8
     @Test
     public void testMdc8(){
         final int a = 5;
@@ -136,7 +129,7 @@ public class MathUtlTest {
         final int atual = MathUtl.mdc(a, a);
         assertEquals(esperado, atual);
     }
-    //propriedade 9
+    
     @Test
     public void testMdc9(){
         int[] valores = new int[3];
@@ -148,7 +141,7 @@ public class MathUtlTest {
         int atual = MathUtl.mdc(valores);
         assertEquals(esperado, atual);
     }
-    //propriedade 12
+    
     @Test
     public void testMdc12Primo2(){
         final int p = 2;
@@ -180,6 +173,16 @@ public class MathUtlTest {
         final int esperado = 1;
         final int atual = MathUtl.mdc(p, a);
         assertEquals(esperado, atual);
+    }
+    @Test
+    public void testMdc13SParam(){
+        assertThrows(IllegalArgumentException.class, ()->MathUtl.mdc());
+    }
+    @Test
+    public void testMdc13CParamNull(){
+//        MathUtl.mdc(null);
+        assertThrows(NullPointerException.class, ()->MathUtl.mdc(null));
+        
     }
 
 }
